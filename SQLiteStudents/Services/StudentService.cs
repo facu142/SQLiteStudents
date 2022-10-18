@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace SQLiteStudents.Services
 {
-    internal class StudentService : IStudentService
+    public class StudentService : IStudentService
     {
         private SQLiteAsyncConnection _dbConnection;
         public StudentService()

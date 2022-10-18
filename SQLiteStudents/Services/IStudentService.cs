@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SQLiteStudents.Services
 {
-    internal interface IStudentService
+    public interface IStudentService
     {
         Task<List<StudentModel>> GetStudentList();
         Task<int> AddStudent(StudentModel studentModel);

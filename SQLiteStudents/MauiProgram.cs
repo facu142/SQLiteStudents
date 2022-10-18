@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using SQLiteStudents.Services;
 using SQLiteStudents.ViewModels;
 using SQLiteStudents.Views;
 
@@ -16,15 +17,17 @@ public static class MauiProgram
 				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
 				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
 			});
-		// Services 
+        // Services 
+        builder.Services.AddSingleton<IStudentService, StudentService>();
 
+        // View Registration
+        builder.Services.AddSingleton<StudentListPage>(); 
+		builder.Services.AddTransient<AddUpdateStudentDetail>();
 
-		// View Registration
-		builder.Services.AddSingleton<StudentListPage>();
+        // View Models
+        builder.Services.AddSingleton<StudentListPageViewModel>();
+        builder.Services.AddTransient<AddUpdateStudentDetailViewModel>();
 
-		// View Models
-		builder.Services.AddSingleton<StudentListPageViewModel>();
-
-		return builder.Build();
+        return builder.Build();
 	}
 }
